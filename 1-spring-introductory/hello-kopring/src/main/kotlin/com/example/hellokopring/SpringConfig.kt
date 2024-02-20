@@ -1,6 +1,6 @@
 package com.example.hellokopring
 
-import com.example.hellokopring.repository.JdbcMemberRepository
+import com.example.hellokopring.repository.JdbcTemplateMemberRepository
 import com.example.hellokopring.repository.MemberRepository
 import com.example.hellokopring.service.MemberService
 import org.springframework.context.annotation.Bean
@@ -16,6 +16,7 @@ class SpringConfig(private val dataSource: DataSource) {
 
     @Bean
     fun memberRepository(): MemberRepository {
-        return JdbcMemberRepository(dataSource)
+//        return JdbcMemberRepository(dataSource)
+        return JdbcTemplateMemberRepository(dataSource)
     }
 }
