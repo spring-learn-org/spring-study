@@ -3,7 +3,7 @@ package com.example.hellokopring.service
 import com.example.hellokopring.domain.Member
 import com.example.hellokopring.repository.MemberRepository
 
-class MemberService(val memberRepository: MemberRepository) {
+class MemberService(private val memberRepository: MemberRepository) {
     fun join(member: Member): Long {
         validateDuplicateMember(member)
         memberRepository.save(member)
