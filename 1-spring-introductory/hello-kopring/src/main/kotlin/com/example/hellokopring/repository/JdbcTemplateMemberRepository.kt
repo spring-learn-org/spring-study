@@ -15,7 +15,7 @@ class JdbcTemplateMemberRepository(private val dataSource: DataSource) : MemberR
         val jdbcInsert: SimpleJdbcInsert = SimpleJdbcInsert(jdbcTemplate)
         jdbcInsert.withTableName("member").usingGeneratedKeyColumns("id")
 
-        val parameters: MutableMap<String, Any> = mutableMapOf<String, Any>()
+        val parameters: MutableMap<String, Any?> = mutableMapOf<String, Any?>()
         parameters.put("name", member.name)
 
         val key: Number = jdbcInsert.executeAndReturnKey(MapSqlParameterSource(parameters))

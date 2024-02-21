@@ -1,14 +1,14 @@
 package com.example.hellokopring
 
-import com.example.hellokopring.repository.JdbcTemplateMemberRepository
+import com.example.hellokopring.repository.JpaMemberRepository
 import com.example.hellokopring.repository.MemberRepository
 import com.example.hellokopring.service.MemberService
+import jakarta.persistence.EntityManager
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import javax.sql.DataSource
 
 @Configuration
-class SpringConfig(private val dataSource: DataSource) {
+class SpringConfig(private val em: EntityManager) {
     @Bean
     fun memberService(): MemberService {
         return MemberService(memberRepository())
@@ -17,6 +17,6 @@ class SpringConfig(private val dataSource: DataSource) {
     @Bean
     fun memberRepository(): MemberRepository {
 //        return JdbcMemberRepository(dataSource)
-        return JdbcTemplateMemberRepository(dataSource)
+        return JpaMemberRepository(em)
     }
 }
