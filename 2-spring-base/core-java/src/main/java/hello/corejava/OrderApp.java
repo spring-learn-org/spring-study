@@ -2,14 +2,15 @@ package hello.corejava;
 
 import hello.corejava.member.Grade;
 import hello.corejava.member.Member;
-import hello.corejava.member.MemberServiceImpl;
+import hello.corejava.member.MemberService;
 import hello.corejava.order.Order;
-import hello.corejava.order.OrderServiceImpl;
+import hello.corejava.order.OrderService;
 
 public class OrderApp {
     public static void main(String[] args) {
-        MemberServiceImpl memberService = new MemberServiceImpl();
-        OrderServiceImpl orderService = new OrderServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+        OrderService orderService = appConfig.orderService();
 
         Long memberId = 1L;
         Member member = new Member(memberId, "memberA", Grade.VIP);
