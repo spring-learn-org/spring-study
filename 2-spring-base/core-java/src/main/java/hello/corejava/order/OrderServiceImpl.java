@@ -2,10 +2,12 @@ package hello.corejava.order;
 
 import hello.corejava.discount.DiscountPolicy;
 import hello.corejava.member.*;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+@Getter
 @Component
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
