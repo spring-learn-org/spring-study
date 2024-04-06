@@ -40,11 +40,15 @@ public class SingletonWithPrototypeTest1 {
     @Scope("singleton")
     static class ClientBean {
 
+        private final ObjectProvider<PrototypeBean> prototypeBeanObjectProvider;
+
         @Autowired
-        private ObjectProvider<PrototypeBean> prototypeBeanProvider;
+        private ClientBean(ObjectProvider<PrototypeBean> prototypeBeanObjectProvider) {
+            this.prototypeBeanObjectProvider = prototypeBeanObjectProvider;
+        }
 
         public int logic() {
-            PrototypeBean prototypeBean = prototypeBeanProvider.getObject();
+            PrototypeBean prototypeBean = this.prototypeBeanObjectProvider.getObject();
             prototypeBean.addCount();
             return prototypeBean.getCount();
         }
